@@ -1,4 +1,3 @@
-use rayon::prelude::*;
 use std::cmp::{min, max};
 
 pub struct Foo1D {

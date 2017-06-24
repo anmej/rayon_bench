@@ -1,10 +1,7 @@
 use test::Bencher;
 use free_fns::*;
 
-#[bench]
-fn empty(b: &mut Bencher) {
-    b.iter(|| 1)
-}
+const NUM_ITER: usize = 100;
 
 #[bench]
 fn v1000w1000(b: &mut Bencher) {

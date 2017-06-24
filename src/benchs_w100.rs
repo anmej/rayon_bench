@@ -1,10 +1,7 @@
 use test::Bencher;
 use free_fns::*;
 
-#[bench]
-fn empty(b: &mut Bencher) {
-    b.iter(|| 1)
-}
+const NUM_ITER: usize = 100;
 
 #[bench]
 fn v1000w100(b: &mut Bencher) {
@@ -13,7 +10,7 @@ fn v1000w100(b: &mut Bencher) {
     let w_size = 100;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -24,7 +21,7 @@ fn v10000w100(b: &mut Bencher) {
     let w_size = 100;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -35,7 +32,7 @@ fn v100000w100(b: &mut Bencher) {
     let w_size = 100;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -47,7 +44,7 @@ fn v1000w100par(b: &mut Bencher) {
     let w_size = 100;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_par_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -58,7 +55,7 @@ fn v10000w100par(b: &mut Bencher) {
     let w_size = 100;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_par_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -69,7 +66,7 @@ fn v100000w100par(b: &mut Bencher) {
     let w_size = 100;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_par_iter(&mut data, &mut buf, w_size);
     })
 }

@@ -13,7 +13,4 @@ name = "mylib"
 name = "main"
 
 [[bin]]
-name = "test1"
-
-[[bin]]
 name = "window"

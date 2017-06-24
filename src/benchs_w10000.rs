@@ -1,10 +1,7 @@
 use test::Bencher;
 use free_fns::*;
 
-#[bench]
-fn empty(b: &mut Bencher) {
-    b.iter(|| 1)
-}
+const NUM_ITER: usize = 100;
 
 #[bench]
 fn v10000w10000(b: &mut Bencher) {
@@ -13,7 +10,7 @@ fn v10000w10000(b: &mut Bencher) {
     let w_size = 10000;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -24,7 +21,7 @@ fn v100000w10000(b: &mut Bencher) {
     let w_size = 10000;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -36,7 +33,7 @@ fn v10000w10000par(b: &mut Bencher) {
     let w_size = 10000;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_par_iter(&mut data, &mut buf, w_size);
     })
 }
@@ -47,7 +44,7 @@ fn v100000w10000par(b: &mut Bencher) {
     let w_size = 10000;
     data[0] = 1;
 
-    b.iter(|| for _ in 1..10 {
+    b.iter(|| for _ in 1..NUM_ITER {
         step_par_iter(&mut data, &mut buf, w_size);
     })
 }
